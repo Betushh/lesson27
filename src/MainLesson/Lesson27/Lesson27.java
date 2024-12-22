@@ -1,4 +1,4 @@
-package MainLesson.Lesson27;
+package MainLesson.Lesson26;
 
 import java.util.Scanner;
 
@@ -13,7 +13,6 @@ public class Lesson27 {
             a.printStackTrace();
         }finally {
             System.out.println("it is jeff's doing");
-            System.out.println("new doingss");
         }
     }
 }
