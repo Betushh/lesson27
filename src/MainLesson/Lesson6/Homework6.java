@@ -3,13 +3,10 @@ package MainLesson.Lesson6;
 import java.util.Scanner;
 
 public class Homework6 {
-    int something = 23;
-    String someone = "Someone";
+
 
 
     public static void main(String[] args) {
-//        Scanner scanner = new Scanner(System.in);
-//        int number = scanner.nextInt();
 
         int number = 10;
 
@@ -38,20 +35,18 @@ public class Homework6 {
         return getfactorial(a - 1) * a;
     }
 
-    int getPrime(int a, int b) {
-        if (a == 1 || b == 1) {
-            return 1;
+
+    int getTask(int a, int b) {
+        if (b == 0) {
+            return a;
         }
-        if (a == 0 || b == 0) {
-            return 0;
-        }
-        return a > b ? getPrime(a, a % b) : getPrime(b, b % a);
+        return getTask(b, a % b);
     }
 
     String getReciprocalPrimeNumbers(int a, int b) {
-        if (getPrime(a, b) == 0) {
-            String result = a + " and " + b + " are reciprocal prime numbers";
-            return result;
+        // Check if the GCD of a and b is 1
+        if (getTask(a, b) == 1) {
+            return a + " and " + b + " are reciprocal prime numbers";
         }
         return a + " and " + b + " are not reciprocal prime numbers";
     }

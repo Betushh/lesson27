@@ -56,11 +56,15 @@ public class Homework3 {
         System.out.println("task 4 result is "+k1);
 */
 
-       /* // task 5
+/*
         Scanner scanner2 = new Scanner(System.in);
         int task5 = scanner2.nextInt();
         System.out.println("Task's number is "+ task5);
         boolean ourCase = true;
+
+        if(task5 == 0 || task5 == 1){
+            ourCase = false;
+        }
         for(int t5 = 2;t5 <= task5/2 ;t5++){
             if(task5 % t5 ==0){
                 ourCase = false;
@@ -68,7 +72,9 @@ public class Homework3 {
             }
         }
         System.out.println("your number is "+ (ourCase ? "prime": "not prime"));
-*/
+
+ */
+
         //task 6
       /*  for(int s6 = 2; s6<100 ;s6++){
             boolean task6 = true;
@@ -128,7 +134,7 @@ public class Homework3 {
             task9 /= 10;
         }
         System.out.println(reverse);
-        System.out.println( palydrome == reverse ? "the number is palydrome " : "is not");
+        System.out.println( palydrome == reverse ? "the number is palydrome " : "is not palydrome ");
 
         }
     }

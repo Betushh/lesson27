@@ -17,36 +17,37 @@ public class Homework9 {
         String name1 = "Never odd or even";
         String text = "AcBd";
         String zeroSpaceText = text.replace(" ", "");
-        String withoutPuncText = zeroSpaceText.replace(".","");
+        String withoutPuncText = zeroSpaceText.replace(".", "");
 
 
-
-              findNamesNumber(name);
+        findNamesNumber(name);
         //      findPalindrome(name1);
 
-   //   getAlphabet(text,2);
+        //   getAlphabet(text,2);
+
+        System.out.println(getEqualNames("name1   ","name") ? "These names are equal":"These names are not equal");
+        System.out.println( "Our name's number is "+findNamesNumber("name human"));
 
     }
 
 
-    static void getEqualNames(String name1, String name2) {
-        String newName1 = name1.toUpperCase();
-        String newName2 = name2.toUpperCase();
-
-        System.out.println(newName1.equals(newName2));
+    private static boolean getEqualNames(String name1, String name2){
+        if(name1.trim().toLowerCase().equalsIgnoreCase(name2.toLowerCase())){
+            return true;
+        }
+        return false;
     }
 
 
-    static void findNamesNumber(String name) {
-        int a = 0;
-        for (String str : name.split(" ")) {
-            if (str.equals("")) {
+    private static int findNamesNumber(String name){
+        int number = 0;
+        for (String character: name.split(" ")){
+            if(character.isEmpty()) {
                 continue;
             }
-            a++;
-//            System.out.println(str);
+            number++;
         }
-        System.out.println("Our word count in this String is " + a);
+        return number;
     }
 
     static void findPalindrome(String name) {
@@ -62,17 +63,16 @@ public class Homework9 {
     }
 
 
-
     static void getAlphabet(String text, int encrypt) {//solve it
         String alphabet = "abcdefghijklmnopqrstuvwxyz";
         String[] textAlp = alphabet.split("");
-        for(int i = 0; i< alphabet.length();i++){
+        for (int i = 0; i < alphabet.length(); i++) {
             System.out.println(textAlp[i]);
         }
     }
 
 
-            }
+}
 
 
 

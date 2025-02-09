@@ -1,7 +1,7 @@
 package MainLesson.Lesson26;
 
 public enum MySQLInfo {
-    CONNECTION_URL("jdbc:mysql://localhost/"),
+    CONNECTION_URL("jdbc:mysql://localhost:3306/"),
     USERNAME("root"),
     PASSWORD("betus040204");
 
