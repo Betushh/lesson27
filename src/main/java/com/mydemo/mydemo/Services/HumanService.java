@@ -1,4 +1,4 @@
-package com.mydemo.mydemo.HumanServiceImp;
+package com.mydemo.mydemo.Services;
 
 import com.mydemo.mydemo.Models.Human;
 
@@ -8,9 +8,7 @@ public interface HumanService {
 
     List<Human> getList();
 
-    Human getStudentbyID(Integer id, String name);
-
-    Human getHumanByName(Integer id, String name);
+     Human getHumanbyID(Integer id);
 
     Human add(Human human);
 

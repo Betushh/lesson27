@@ -1,55 +1,38 @@
 package com.mydemo.mydemo.Models;
 
+
+import jakarta.persistence.*;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+import org.apache.tomcat.util.net.TLSClientHelloExtractor;
+
+import java.util.List;
+
+@Data
+@RequiredArgsConstructor
+@Entity
+@Table(name = "students")
+//@NamedEntityGraph(name = "studentTasks", attributeNodes = @NamedAttributeNode("task"))
 public class Student {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String surname;
+    private String university;
+    private Integer salary;
+    private Integer status;
 
-    public Student(){}
-
-    public  Student(int id, String name, String surname){
-        this.id=id;
-        this.name =name;
-        this.surname=surname;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                '}';
-    }
+    @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)
+    private Project project;
 
 
+    @OneToMany(mappedBy = "student",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Task> task;
 
-    public void message(){
-        System.out.println("default message");
-    }
+
+    @ManyToMany(mappedBy = "students", fetch = FetchType.EAGER)// ada soz dedi niye?
+    private List<Lesson> lessons;
 }
+

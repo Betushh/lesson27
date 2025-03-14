@@ -1,0 +1,1 @@
+insert into books(id, name, author) values(1,'Frankenstein', 'Mary Shelley');

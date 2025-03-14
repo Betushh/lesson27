@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20250302-05
+      author: Betushh
+      changes:
+        - addColumn:
+            tableName: feedback
+            columns:
+              - column:
+                  name: address
+                  type: varchar(255)

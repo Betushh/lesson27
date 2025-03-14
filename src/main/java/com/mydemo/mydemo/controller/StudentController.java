@@ -1,24 +1,62 @@
 package com.mydemo.mydemo.controller;
 
 import com.mydemo.mydemo.Models.Student;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.mydemo.mydemo.Models.dto.AddStudentRequestDto;
+import com.mydemo.mydemo.Models.dto.StudentDto;
+import com.mydemo.mydemo.Services.StudentService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @RestController
+@RequestMapping("/students")
 public class StudentController {
+    private final StudentService studentService;
 
-    @GetMapping("/students/getStudent")
-    public Student getStudent(){
-        return new Student(1,"Steven", "King");
+    @GetMapping()
+    public List<StudentDto> getList(){
+    return studentService.getList();
     }
 
-    @GetMapping("/students/getList")
-    public List<Student> getList(){
-        Student student1 = new Student(1,"Steven", "King");
-        Student student2 = new Student(2,"Human2", "holy");
-        Student student3 = new Student(3,"HUman3", "hol");
-        return List.of(student1,student2,student3);
+    @Operation(summary = "Create a new product", description = "Add a new product to the system")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description= "Successfully created the product"),
+            @ApiResponse(responseCode = "500", description="Internal server error")
+    })
+    @GetMapping("/{id}")
+    public StudentDto getStudentByID(@PathVariable Integer id) {
+        return studentService.getStudentByID(id);
+    }
+
+
+    @GetMapping("/name")
+    public List<Student> getStudentByNameORUniversity(@RequestParam String name) {
+        return studentService.getStudentByNameORUniversity(name);
+    }
+
+    @GetMapping("/namUni")
+    public List<Student> getStudentByNameAndUniversity(@RequestParam String name, @RequestParam String university) {
+        return studentService.getStudentByNameAndUniversity(name, university);
+    }
+
+    @PostMapping
+    public StudentDto add(@RequestBody AddStudentRequestDto addStudentRequestDto) {
+        return studentService.add(addStudentRequestDto);
+    }
+
+    @PutMapping
+    public Student update(Student student) {
+        return studentService.update(student);
+    }
+
+    @DeleteMapping
+    public void delete(Integer id) {
+        studentService.delete(id);
     }
 }

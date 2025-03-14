@@ -1,47 +1,37 @@
-package com.mydemo.mydemo.Lesson35Controller;
+package com.mydemo.mydemo.controller;
 
-import com.mydemo.mydemo.HumanServiceImp.HumanService;
+import com.mydemo.mydemo.Services.HumanService;
 import com.mydemo.mydemo.Models.Human;
-import com.mydemo.mydemo.Models.Student;
-import org.springframework.beans.factory.annotation.Autowired;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @RestController
-@RequestMapping("/Humans")
-
+@RequestMapping("/humans")
 public class HumanController {
 
-//    @Autowired
     private final HumanService humanService;
 
 
-    public HumanController(HumanService humanService) {
-        this.humanService = humanService;
-    }
-
-//    public void setHumanController(HumanService humanService) {
-//        this.humanService = humanService;
-//    }
-
-
     @GetMapping
+    @ResponseStatus(HttpStatus.OK)
     public List<Human> getList() {
         return humanService.getList();
     }
 
     @GetMapping("/id")
-    public Human getStudentByID(@RequestParam(required = false) Integer id, @RequestParam String name) {
-        return humanService.getStudentbyID(id, name);
+    @ResponseStatus(HttpStatus.OK)
+    public Human getHumanbyID(Integer id) {
+        return humanService.getHumanbyID(id);
     }
 
-    @GetMapping("/{id}/{name}")
-    public Human getHumanByName(@PathVariable(name = "id") Integer id, @PathVariable String name) {
-        return humanService.getHumanByName(id, name);
-    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -50,6 +40,7 @@ public class HumanController {
     }
 
     @PutMapping
+    @ResponseStatus(HttpStatus.OK)
     public Human update(@RequestBody Human human) {
         return humanService.update(human);
     }

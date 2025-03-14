@@ -1,18 +1,13 @@
 package com.mydemo.mydemo.Models;
 
-import lombok.*;
-import lombok.experimental.FieldDefaults;
-
-//@Setter
-//@Getter
-//@ToString
-//@EqualsAndHashCode
-//@RequiredArgsConstructor
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 @Data
+@AllArgsConstructor
 public class Human {
-    private final Integer id;
-    private final String name;
-    private final String surname;
+    private Integer id;
+    private String name;
+    private String surname;
 
 }

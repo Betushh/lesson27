@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20250302-01
+      author: Betushh
+      changes:
+        - createTable:
+            tableName: feedback
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: feedback_primary_id
+                  name: id
+                  type: int
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false

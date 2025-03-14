@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20250302-9
+      author: Betushh
+      changes:
+        - delete:
+            tableName: feedback
+            where: id = 1

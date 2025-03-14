@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20250302-10
+      author: Betushh
+      changes:
+        - dropTable:
+            tableName: feedback

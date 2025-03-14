@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20250302-06
+      author: Betushh
+      changes:
+        - insert:
+            tableName: feedback
+            columns:
+              - column:
+                  name: name
+                  value: 'Thor'
+              - column:
+                  name: address
+                  value: 'Asgard'
