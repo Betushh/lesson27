@@ -1,14 +1,19 @@
 package com.mydemo.mydemo.Models.dto;
+import com.mydemo.mydemo.Models.Task;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+
+import java.util.List;
 
 @Data
 @RequiredArgsConstructor
 public class StudentDto {
 
-    private String fullName;
+    private Integer id;
+    private String name;
+    private String surname;
     private ProjectDto projectName;
-//    private List<Task> tasks;
+    private List<Task> tasks;
 
     @Data
     public static class ProjectDto{
@@ -16,9 +21,9 @@ public class StudentDto {
 
     }
 
-//    @Data
-//    public static class TaskDto{
-//        private String name;
-//
-//    }
+    @Data
+    public static class TaskDto{
+        private String name;
+
+    }
 }

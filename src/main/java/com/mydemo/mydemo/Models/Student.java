@@ -3,6 +3,7 @@ package com.mydemo.mydemo.Models;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.apache.tomcat.util.net.TLSClientHelloExtractor;
 

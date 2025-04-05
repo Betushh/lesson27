@@ -1,4 +1,4 @@
-package com.mydemo.mydemo.serviceImp;
+package com.mydemo.mydemo.Services.serviceImp;
 
 import com.mydemo.mydemo.Models.Student;
 import com.mydemo.mydemo.Models.dto.AddStudentRequestDto;
@@ -6,21 +6,22 @@ import com.mydemo.mydemo.Models.dto.StudentDto;
 import com.mydemo.mydemo.Services.StudentService;
 import com.mydemo.mydemo.mapper.StudentMapper;
 import com.mydemo.mydemo.repositories.StudentRepository;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Slf4j
 @RequiredArgsConstructor
+@Slf4j
 @Service
+@Data
 public class StudentServiceImp implements StudentService {
 
     private final StudentRepository repository;
     private final StudentMapper studentMapper;
-    private final ModelMapper modelMapper;
+//    private  ModelMapper modelMapper;
 
     @Override
     public List<StudentDto> getList() {
@@ -31,7 +32,8 @@ public class StudentServiceImp implements StudentService {
     public StudentDto getStudentByID(Integer id) {
 //        return studentMapper.toStudentDto(repository.findById(id).orElseThrow(RuntimeException::new));
         Student student = repository.findById(id).orElseThrow(NullPointerException::new);
-        return modelMapper.map(student, StudentDto.class);
+//        return modelMapper.map(student, StudentDto.class);
+        return studentMapper.toStudentDto(student);
     }
 
     @Override
@@ -60,7 +62,5 @@ public class StudentServiceImp implements StudentService {
     public void delete(Integer id) {
         repository.deleteById(id);
     }
-
-
 
 }

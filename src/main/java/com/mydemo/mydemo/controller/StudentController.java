@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -26,7 +27,7 @@ public class StudentController {
 
     @Operation(summary = "Create a new product", description = "Add a new product to the system")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description= "Successfully created the product"),
+            @ApiResponse(responseCode = "200", description= "Successfully created the product"),
             @ApiResponse(responseCode = "500", description="Internal server error")
     })
     @GetMapping("/{id}")
@@ -36,6 +37,7 @@ public class StudentController {
 
 
     @GetMapping("/name")
+    @ResponseStatus(HttpStatus.OK)
     public List<Student> getStudentByNameORUniversity(@RequestParam String name) {
         return studentService.getStudentByNameORUniversity(name);
     }
@@ -46,6 +48,7 @@ public class StudentController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public StudentDto add(@RequestBody AddStudentRequestDto addStudentRequestDto) {
         return studentService.add(addStudentRequestDto);
     }

@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class AddStudentRequestDto {
 
+    private Integer id;
     private String name;
     private String surname;
 }

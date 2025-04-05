@@ -10,23 +10,24 @@ import org.mapstruct.Named;
 import java.util.List;
 
 @Mapper(componentModel = "spring")
-public interface StudentMapper {
+public interface  StudentMapper {
 
 
-    @Mapping(source = "project", target = "projectName")
-    @Mapping(source = "student", target = "fullName", qualifiedByName = "mapFullName")
+//    @Mapping(source = "project", target = "projectName")
+//    @Mapping(source = "task", target = "tasks")
+//    @Mapping(source = "student", target = "fullName", qualifiedByName = "mapFullName")
     StudentDto toStudentDto(Student student);
+//
+//    @Named("mapFullName")
+//    default String mapFullName(Student student){
+//        return student.getName() +" "+ student.getSurname();
+//    }
 
-    @Named("mapFullName")
-    default String mapFullName(Student student){
-        return student.getName() +" "+ student.getSurname();
-    }
-
-//    @Mapping(source = "lastName", target = "surname")
     Student toStudent(AddStudentRequestDto addStudentRequestDto);
-
-    @Mapping(source = "project", target = "projectName")
-    @Mapping(source = "student", target = "fullName", qualifiedByName = "mapFullName")
+//
+//    @Mapping(source = "project", target = "projectName")
+//    @Mapping(source = "task", target = "tasks")
+//    @Mapping(source = "student", target = "fullName", qualifiedByName = "mapFullName")
     List<StudentDto> toStudentDtoList(List<Student> studentList);
 
 }

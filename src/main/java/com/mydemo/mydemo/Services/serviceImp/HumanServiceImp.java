@@ -1,4 +1,4 @@
-package com.mydemo.mydemo.serviceImp;
+package com.mydemo.mydemo.Services.serviceImp;
 
 import com.mydemo.mydemo.Models.Human;
 import com.mydemo.mydemo.Services.HumanService;

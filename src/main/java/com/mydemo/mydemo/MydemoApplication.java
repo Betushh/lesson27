@@ -1,13 +1,15 @@
 package com.mydemo.mydemo;
 
-import com.mydemo.mydemo.Models.Student;
+import com.mydemo.mydemo.Models.security.Authority;
+import com.mydemo.mydemo.Models.security.User;
+import com.mydemo.mydemo.jwt.JwtService;
 import com.mydemo.mydemo.repositories.StudentRepository;
+import com.mydemo.mydemo.repositories.UserRepository;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.tomcat.util.net.TLSClientHelloExtractor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,11 +17,12 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
 import java.io.File;
-
+import java.util.Set;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -34,6 +37,10 @@ public class MydemoApplication implements CommandLineRunner {
 //	private final LessonRepository lessonRepository;
     private final JavaMailSender javaMailSender;
     private final TemplateEngine templateEngine;
+    private final JwtService jwtService;
+
+    private final UserRepository userRepository;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public static void main(String[] args) {
         SpringApplication.run(MydemoApplication.class, args);
@@ -42,6 +49,36 @@ public class MydemoApplication implements CommandLineRunner {
     @Override
     @Transactional
     public void run(String... args) throws Exception {
+
+//        User user = userRepository.findByUsername("human").get();
+//        String token = jwtService.issueToken(user);
+//        System.out.println("JWT: " + token);
+//        user.setIssueToken(token);
+//        userRepository.save(user);
+        /*
+        User user =new User();
+        user.setUsername("userHuman");
+        user.setPassword(bCryptPasswordEncoder.encode("admin1234"));
+        user.setIsAccountNonExpired(true);
+        user.setIsEnabled(true);
+        user.setIsAccountNonLocked(true);
+        user.setIsCredentialsNonExpired(true);
+
+//        Authority authority =new Authority();
+//        authority.setAuthority("ADMIN");
+//        authority.setUser(user);
+
+        Authority authority1 =new Authority();
+        authority1.setAuthority("USER");
+        authority1.setUser(user);
+
+        user.setAuthorities(Set.of( authority1));
+
+        User userEntity = userRepository.save(user);
+
+
+         */
+
 
 
 //
